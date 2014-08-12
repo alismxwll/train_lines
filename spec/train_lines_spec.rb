@@ -49,4 +49,17 @@ describe Line do
     line1.delete_line!
     expect(Line.all).to eq []
   end
+
+  it 'will list out the stations in a particular line' do
+    line1 = Line.new({:name => 'Red Line'})
+    line1.save
+    station1 = Station.new({:name => 'Red Duck Cove'})
+    station1.save
+    line1.add_station(station1)
+    station2 = Station.new({:name => 'Ducks N Pirates'})
+    station2.save
+    line1.add_station(station2)
+    expect(Line.all).to eq [line1]
+    expect(line1.list_stations).to eq [station1, station2]
+  end
 end

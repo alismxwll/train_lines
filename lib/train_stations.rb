@@ -29,7 +29,7 @@ class Station
     @name == station_objs.name
   end
 
-  def list_names
+  def list_stations
     names = []
     station_names = DB.exec("SELECT name FROM train_stations;")
     station_names.each do |name|

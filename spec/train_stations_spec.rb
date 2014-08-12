@@ -27,7 +27,7 @@ describe Station do
   it 'will read out all station names' do
     station = Station.new({:name => 'End'})
     station.save
-    expect(station.list_names).to eq ['End']
+    expect(station.list_stations).to eq ['End']
   end
 
   it 'will update the name of a station' do
@@ -37,6 +37,7 @@ describe Station do
     station1.update_station_info(station2)
     expect(station1.name).to eq 'Red Duck Cove'
   end
+
   it 'will delete a train station' do
     station1 = Station.new({:name => 'Red Duck Cove'})
     station1.save

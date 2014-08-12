@@ -54,3 +54,4 @@ class Line
     DB.exec("DELETE FROM stops WHERE id = #{self.id}")
   end
 end
+
