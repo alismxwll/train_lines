@@ -8,4 +8,8 @@ class Line
     @name = attributes[:name]
     @id = attributes[:id]
   end
+
+  def self.all
+    []
+  end
 end
