@@ -45,5 +45,6 @@ class Station
 
   def delete_station!
     DB.exec("DELETE FROM train_stations WHERE id = #{self.id};")
+    DB.exec("DELETE FROM stops WHERE station_id = #{self.id};")
   end
 end

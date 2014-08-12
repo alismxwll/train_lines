@@ -24,12 +24,21 @@ describe Line do
     expect(line1).to eq line2
   end
 
-  it 'will add a Station to a Line' do
+  it "'add_station' will add a Station to a Line & 'list_stations' lists them out" do
     line1 = Line.new({:name => 'Blue Line'})
     line1.save
     station1 = Station.new({:name => 'Folly Station'})
     station1.save
     line1.add_station(station1)
-    expect(line1.list_stations).to eq [station1]
+    expect(line1.stations).to eq [station1]
+  end
+
+  it 'will delete a line' do
+    line1 = Line.new({:name => 'Blue Line'})
+    line1.save
+    station1 = Station.new({:name => 'Folly Station'})
+    station1.save
+    line1.delete_line!
+    expect(Line.all).to eq []
   end
 end

@@ -33,7 +33,7 @@ class Line
     DB.exec("INSERT INTO stops (line_id, station_id) VALUES ('#{self.id}', '#{station.id}');")
   end
 
-  def list_stations
+  def stations
     stations = []
     results = DB.exec("SELECT * FROM stops WHERE line_id = '#{self.id}';")
     results.each do |station|
@@ -42,5 +42,10 @@ class Line
       stations << Station.new({:name => station_name, :id => station_id})
     end
     stations
+  end
+
+  def delete_line!
+    DB.exec("DELETE FROM train_lines WHERE id = #{self.id}")
+    DB.exec("DELETE FROM stops WHERE id = #{self.id}")
   end
 end
