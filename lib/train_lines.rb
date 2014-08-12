@@ -17,4 +17,8 @@ class Line
     results = DB.exec("INSERT INTO train_lines (name) VALUES ('#{self.name}') RETURNING id;")
     @id = results.first['id'].to_i
   end
+
+  def ==(line_obj)
+    @name == line_obj.name
+  end
 end

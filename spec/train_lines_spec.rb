@@ -15,4 +15,12 @@ describe Line do
     line.save
     expect(line.name).to eq 'Blue Line'
   end
+
+  it 'will be the same Line if it has the same name' do
+    line1 = Line.new({:name => 'Blue Line'})
+    line1.save
+    line2 = Line.new({:name => 'Blue Line'})
+    line2.save
+    expect(line1).to eq line2
+  end
 end
