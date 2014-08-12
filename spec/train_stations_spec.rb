@@ -34,7 +34,13 @@ describe Station do
     station1 = Station.new({:name => 'Folly Station'})
     station1.save
     station2 = Station.new({:name => 'Red Duck Cove'})
-    station1.update_name(station2)
-    expect(station1).to eq [station2]
+    station1.update_info(station2)
+    expect(station1.name).to eq 'Red Duck Cove'
+  end
+  it 'will delete a train station' do
+    station1 = Station.new({:name => 'Red Duck Cove'})
+    station1.save
+    station1.delete_station!
+    expect(Station.all).to eq []
   end
 end

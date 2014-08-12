@@ -30,6 +30,6 @@ describe Line do
     station1 = Station.new({:name => 'Folly Station'})
     station1.save
     line1.add_station(station1)
-    expect(line1.stations).to eq [station1]
+    expect(line1.list_stations).to eq [station1]
   end
 end

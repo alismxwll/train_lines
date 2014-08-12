@@ -33,7 +33,7 @@ class Line
     DB.exec("INSERT INTO stops (line_id, station_id) VALUES ('#{self.id}', '#{station.id}');")
   end
 
-  def stations
+  def list_stations
     stations = []
     results = DB.exec("SELECT * FROM stops WHERE line_id = '#{self.id}';")
     results.each do |station|
