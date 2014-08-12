@@ -44,6 +44,11 @@ class Line
     stations
   end
 
+  def update_line_info(new_info)
+    DB.exec("UPDATE train_lines SET name = '#{new_info.name}' WHERE id = #{self.id};")
+    @name = new_info.name
+  end
+
   def delete_line!
     DB.exec("DELETE FROM train_lines WHERE id = #{self.id}")
     DB.exec("DELETE FROM stops WHERE id = #{self.id}")

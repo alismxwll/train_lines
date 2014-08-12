@@ -34,11 +34,11 @@ describe Line do
   end
 
   it 'will update the name of a line' do
-    line1 = Line.new({:name => "Andrew's Folly"})
+    line1 = Line.new({:name => 'Andrews Folly'})
     line1.save
-    line2 = Line.new({:name => "Andrew's Salvation"})
+    line2 = Line.new({:name => 'Andrews Salvation'})
     line1.update_line_info(line2)
-    expect(line1.name).to eq "Andrew's Salvation"
+    expect(line1.name).to eq 'Andrews Salvation'
   end
 
   it 'will delete a line' do
