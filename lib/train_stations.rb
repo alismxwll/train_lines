@@ -10,7 +10,12 @@ class Station
   end
 
   def self.all
-    []
+    stations = []
+    db_stations = DB.exec('SELECT * FROM train_stations')
+    db_stations.each do |station|
+      stations << Station.new(station)
+    end
+    stations
   end
 
   def save

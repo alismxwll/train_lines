@@ -16,4 +16,10 @@ describe Station do
     station.save
     expect(Station.all).to eq [station]
   end
+
+  it 'will list out all of the stations' do
+    station = Station.new({:name => 'Stacy Station'})
+    station.save
+    expect(Station.all).to eq [station]
+  end
 end
