@@ -38,7 +38,7 @@ class Station
     names
   end
 
-  def update_info(new_info)
+  def update_station_info(new_info)
     DB.exec("UPDATE train_stations SET name = '#{new_info.name}' WHERE id = #{self.id};")
     @name = new_info.name
   end
