@@ -5,22 +5,26 @@ class Station
   attr_accessor :name, :id
 
   def initialize(attributes)
-    @name = attributes['name']
-    @id = attributes['id'].to_i
+    @name = attributes[:name]
+    @id = attributes[:id].to_i
   end
 
   def self.all
     stations = []
-    db_stations = DB.exec('SELECT * FROM train_stations')
-    db_stations.each do |station|
+    results = DB.exec('SELECT * FROM train_stations;')
+    results.each do |station|
       stations << Station.new(station)
     end
     stations
   end
 
   def save
-    station_save = DB.exec("INSERT INTO train_stations (name) VALUES ('#{@name}') RETURNING id;")
-    @id = station_save.first['id'].to_i
+    results = DB.exec("INSERT INTO train_stations (name) VALUES ('#{self.name}') RETURNING id;")
+    @id = results.first['id'].to_i
+  end
+
+  def ==(station_objs)
+    @name == station_objs.name
   end
 
 end
