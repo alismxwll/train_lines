@@ -13,7 +13,7 @@ describe Line do
   it 'will save all the Lines to the database' do
     line = Line.new({:name => 'Blue Line'})
     line.save
-    expect(line.name).to eq 'Blue Line'
+    expect(Line.all).to eq line
   end
 
   it 'will be the same Line if it has the same name' do
@@ -23,4 +23,10 @@ describe Line do
     line2.save
     expect(line1).to eq line2
   end
+
+  # it 'will list out all the line names from the DB' do
+  #   line = Line.new({:name => 'Blue Line'})
+  #   line.save
+  #   expect(line.name).to eq 'Blue Line'
+  # end
 end

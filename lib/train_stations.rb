@@ -11,9 +11,11 @@ class Station
 
   def self.all
     stations = []
-    results = DB.exec('SELECT * FROM train_stations;')
+    results = DB.exec("SELECT * FROM train_stations;")
     results.each do |station|
-      stations << Station.new(station)
+      name = station['name']
+      id = station['id'].to_i
+      stations << Station.new({:name => name, :id => id})
     end
     stations
   end
