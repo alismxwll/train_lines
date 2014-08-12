@@ -3,7 +3,11 @@ class Station
   attr_accessor :name
 
   def initialize(attributes)
-    @station_name = attributes['name']
+    @name = attributes[:name]
+  end
+
+  def self.all
+    []
   end
 
 end
