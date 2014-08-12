@@ -10,4 +10,10 @@ describe Station do
     Station.all
     expect(Station.all).to eq []
   end
+
+  it 'will save all stations to the database' do
+    station = Station.new({:name => 'Dolly Station'})
+    station.save
+    expect(Station.all).to eq [station]
+  end
 end
