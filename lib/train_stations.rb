@@ -28,5 +28,4 @@ class Station
   def ==(station_objs)
     @name == station_objs.name
   end
-
 end

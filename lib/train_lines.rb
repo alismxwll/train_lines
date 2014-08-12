@@ -10,7 +10,14 @@ class Line
   end
 
   def self.all
-    []
+    lines = []
+    results = DB.exec("SELECT * FROM train_lines;")
+    results.each do |line|
+      name = line['name']
+      id =line['id']
+      lines << Line.new({:name => name, :id => id})
+    end
+    lines
   end
 
   def save
@@ -18,7 +25,22 @@ class Line
     @id = results.first['id'].to_i
   end
 
-  def ==(line_obj)
-    @name == line_obj.name
+  def ==(line_objs)
+    @name == line_objs.name
+  end
+
+  def add_station(station)
+    DB.exec("INSERT INTO stops (line_id, station_id) VALUES ('#{self.id}', '#{station.id}');")
+  end
+
+  def stations
+    stations = []
+    results = DB.exec("SELECT * FROM stops WHERE line_id = '#{self.id}';")
+    results.each do |station|
+      station_id = station['station_id'].to_i
+      station_name = DB.exec("SELECT * FROM train_stations WHERE id = #{station_id};").first['name']
+      stations << Station.new({:name => station_name, :id => station_id})
+    end
+    stations
   end
 end
