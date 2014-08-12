@@ -9,4 +9,10 @@ describe Line do
   it 'starts with an empty array of lines' do
     expect(Line.all).to eq []
   end
+
+  it 'will save all the Lines to the database' do
+    line = Line.new({:name => 'Blue Line'})
+    line.save
+    expect(line.name).to eq 'Blue Line'
+  end
 end
